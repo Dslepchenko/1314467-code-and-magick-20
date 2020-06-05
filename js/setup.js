@@ -4,30 +4,30 @@ var WIZARD_NAMES = ['Иван', 'Хуан', 'Мария', 'Кристоф', 'В�
 var WIZARD_FAMILY_NAMES = ['Марья', 'Верон', 'Мирабелла', 'Вальц', 'Онопко', 'Топольницкая', 'Нионго', 'Ирвинг'];
 var COAT_COLOR = ['rgb(101, 137, 164)', 'rgb(241, 43, 107)', 'rgb(146, 100, 161)', 'rgb(56, 159, 117)', 'rgb(215, 210, 55)', 'rgb(0, 0, 0)'];
 var EYES_COLOR = ['black', 'red', 'blue', 'yellow', 'green'];
-var NUMBER_PERSONS = 4;
+var NUMBER_WIZARDS = 4;
 
 var userDialog = document.querySelector('.setup');
 userDialog.classList.remove('hidden');
 
 var similarListElement = userDialog.querySelector('.setup-similar-list');
 
-function random(arr) {
+function getRandomValueFromArr(arr) {
   return Math.floor(Math.random() * arr.length);
 }
 
-function getPersons() {
+function getWizards() {
   var persons = [];
-  for (var i = 0; i < NUMBER_PERSONS; i++) {
+  for (var i = 0; i < NUMBER_WIZARDS; i++) {
     persons.push({
-      name: WIZARD_NAMES[random(WIZARD_NAMES)] + ' ' + WIZARD_FAMILY_NAMES[random(WIZARD_FAMILY_NAMES)],
-      coatColor: COAT_COLOR[random(COAT_COLOR)],
-      eyesColor: EYES_COLOR[random(EYES_COLOR)]
+      name: WIZARD_NAMES[getRandomValueFromArr(WIZARD_NAMES)] + ' ' + WIZARD_FAMILY_NAMES[getRandomValueFromArr(WIZARD_FAMILY_NAMES)],
+      coatColor: COAT_COLOR[getRandomValueFromArr(COAT_COLOR)],
+      eyesColor: EYES_COLOR[getRandomValueFromArr(EYES_COLOR)]
     });
   }
   return persons;
 }
 
-var wizards = getPersons();
+var wizards = getWizards();
 
 var similarWizardTemplate = document.querySelector('#similar-wizard-template')
   .content
