@@ -63,13 +63,14 @@
   <div class="demo"></div>
 
   <div class="setup-open">
-    <img src="./img/user-1.jpg" class="setup-open-icon">
+    <img src="./img/user-1.jpg" class="setup-open-icon" tabindex="0">
   </div>
 </header>
 
 <div class="overlay setup hidden">
   <form class="setup-wizard-form"
         method="post"
+        action="https://javascript.pages.academy/code-and-magick"
         enctype="multipart/form-data"
         autocomplete="off">
 
@@ -77,16 +78,16 @@
       <div class="setup-user">
         <div class="upload">
           <img class="setup-user-pic" src="./img/user-1.jpg"/>
-          <input type="file" name="avatar">
+          <input type="file" name="avatar" accept = "image/png, image/jpeg">
         </div>
         <label>
           <input type="text" name="username"
                  maxlength="25" required
-                 class="setup-user-name" value="Синий Пендальф"/>
+                 class="setup-user-name" value="Синий Пендальф" required minlength="2" maxlength="25"/>
         </label>
       </div>
 
-      <span class="setup-close">&times;</span>
+      <span class="setup-close" tabindex="0">&times;</span>
     </div>
 
 
@@ -181,35 +182,25 @@
   </div>
 </template>
 <script>
-
-var fireBallSize = 22;
-
-function getFireballSpeed (isWindFromLeft) {
-  if (isWindFromLeft) {
-    return 5;
+  var fireballSize = 22;
+  var getFireballSpeed = function (windLeft) {
+    return (windLeft) ? 5 : 2;
   }
-
-  return 2;
-}
-
-var wizardWidth = 70;
-
-var wizardHeight = 1.337 * wizardWidth;
-
-function getWizardX (gameFieldWidth) {
-  return (gameFieldWidth - wizardWidth) / 2;
-}
-
-function getWizardY (gameFieldHeight) {
-  return gameFieldHeight / 3;
-}
-
-
+  var wizardSpeed = 3;
+  var wizardWidth = 70;
+  var getWizardHeight = function () {
+    return wizardWidth * 1.337;
+  }
+  var getWizardX = function (fieldWidth) {
+    return (fieldWidth - wizardWidth) / 2;
+  }
+  var getWizardY = function (fieldHeight) {
+    return fieldHeight / 3;
+  }
 </script>
-<script src ="js/setup.js"></script>
 <script src="js/stat.js"></script>
-
-<script src="js/game.js" type="application/javascript"></script>
+<script src="js/setup.js"></script>
+<script src="js/game.js"></script>
 
 </body>
 </html>
